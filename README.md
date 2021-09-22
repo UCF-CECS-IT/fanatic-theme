@@ -12,7 +12,38 @@
 
 ## Documentation
 
-Head over to the [Fanatic Theme wiki](https://github.com/UCF/Fanatic-Theme/wiki) for detailed information about this theme, installation instructions, and more.
+* CPTs
+    * Courses
+        * `has` Units
+        * title
+        * blurb
+        * about
+        * overview
+        * author(s)
+        * thumbnail
+    * Unit
+        * `belongs to` Course
+        * `has` Chapters
+        * summary
+        * learning objectives (repeater)
+    * Chapter
+        * `belongs to` Unit
+        * `taxonomy` difficulty
+        * `tag` topic
+        * overview
+        * learning objectives (repeater)
+        * content (standard content field, to allow different editors if needed)
+        * order
+
+* Templates
+    * single-course
+    * single-unit
+    * single-chapter
+    * archive-course
+* Plugins
+    * ACF
+    * WP-Latex
+
 
 -----
 
