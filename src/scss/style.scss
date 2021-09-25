@@ -7,9 +7,15 @@
 //
 // Third-party assets
 //
+$fa-font-path: '../fonts/font-awesome-5';
+@import './@fortawesome/fontawesome-free/scss/fontawesome';
+@import './@fortawesome/fontawesome-free/scss/brands';
+@import './@fortawesome/fontawesome-free/scss/solid';
+@import './@fortawesome/fontawesome-free/scss/regular';
 
 // Athena Framework
-@import './ucf-athena-framework/src/scss/framework';
+@import './ucf-athena-framework/src/scss/variables';
+@import './ucf-athena-framework/src/scss/mixins';
 
 // import any other third-party styles here
 // ...
@@ -19,5 +25,40 @@
 // Project-specific styles and overrides
 //
 
-// Add/import your theme's custom styles here
-// ...
+
+/*
+* Add/import your theme's custom styles here
+*/
+
+.aspect-ratio-box {
+  position: relative;
+}
+
+/* Create a pseudo element that uses padding-bottom to take up space */
+.aspect-ratio-box::after {
+  display: block;
+  content: "";
+  /* 3:2 aspect ratio */
+  padding-bottom: 66.67%;
+}
+
+/* Image is positioned absolutely relative to the parent element */
+.aspect-ratio-box img {
+  /* Image should match parent box size */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+.course-item-link {
+  @include hover-focus {
+    text-decoration: none;
+
+    .course-item-heading {
+      text-decoration: underline;
+    }
+  }
+}
