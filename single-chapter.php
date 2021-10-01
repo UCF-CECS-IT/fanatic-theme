@@ -10,54 +10,85 @@ the_post();
 		<div class="row justify-content-center mx-0">
 			<!-- defaults to first/top on mobile -->
 			<div class="col-xl-8 col-lg-9 col-md-8 push-md-4 push-lg-3 push-xl-3">
-				<h5 class="heading-underline text-transform-none mb-2"><i class="fas fa-book-open"></i> Overview</h5>
+				<div class="row">
+					<div class="col-lg-6">
+						<!-- Overview -->
+						<h5 class="heading-underline text-transform-none mb-2"><i class="fas fa-book-open"></i> Overview</h5>
 
-				<div class="mb-4">
-					<?php echo get_field( 'chapter_overview', $post->ID ); ?>
-				</div>
+						<div class="mb-4">
+							<?php echo get_field( 'chapter_overview', $post->ID ); ?>
+						</div>
 
-				<div class="card bg-inverse-t-3 p-4">
-					<h5 class="heading-underline text-transform-none mb-2"><i class="fas fa-tasks"></i> Learning Objectives</h5>
+						<!-- Objectives, MD or below -->
+						<div class="card bg-inverse-t-3 mx-3 p-4 hidden-lg-up">
+							<h5 class="heading-underline text-transform-none mb-2"><i class="fas fa-tasks"></i> Learning Objectives</h5>
 
-					<div>
-						<?php
-							if ( have_rows( 'chapter_learning_objectives', $post->ID ) ):
-								echo '<ul class="mb-0">';
-								while( have_rows( 'chapter_learning_objectives' ) ) : the_row();
+							<div>
+								<?php
+									if ( have_rows( 'chapter_learning_objectives', $post->ID ) ):
+										echo '<ul class="mb-0">';
+										while( have_rows( 'chapter_learning_objectives' ) ) : the_row();
 
-									$objective = get_sub_field( 'chapter_objective' );
-									echo "<li>{$objective}</li>";
+											$objective = get_sub_field( 'chapter_objective' );
+											echo "<li>{$objective}</li>";
 
-								endwhile;
-								echo '</ul>';
-							else:
-								echo '<p>No objectives entered.</p>';
-							endif;
-						?>
+										endwhile;
+										echo '</ul>';
+									else:
+										echo '<p>No objectives entered.</p>';
+									endif;
+								?>
+							</div>
+						</div>
+
+						<!-- Table of Contents -->
+						<h5 id="contents" class="mt-4 heading-underline text-transform-none mb-2"><i class="fas fa-cubes"></i> Contents</h5>
+
+						<table class="table table-sm table-of-contents">
+							<?php
+								if( have_rows( 'chapter_sub_sections', $post->ID ) ):
+
+									$i = 1;
+									while( have_rows( 'chapter_sub_sections', $post->ID) ) : the_row();
+
+										$subSection = get_sub_field( 'section_title' );
+										$border = ($i == 1) ? 'class="border-top-0"' : '';
+
+										echo '<tr><td ' . $border . '><a href="#' . sanitize_title( $subSection ) . '"><i class="far fa-edit"></i> ' . $subSection . '</a></td></tr>';
+									endwhile;
+									$i++;
+
+								else :
+									echo '<tr><td>No sections entered.</td></tr>';
+								endif;
+							?>
+						</table>
+					</div>
+
+					<!-- Objectives, LG or above -->
+					<div class="col-lg-6 px-0 hidden-md-down">
+						<div class="card bg-inverse-t-3 p-4">
+							<h5 class="heading-underline text-transform-none mb-2"><i class="fas fa-tasks"></i> Learning Objectives</h5>
+
+							<div>
+								<?php
+									if ( have_rows( 'chapter_learning_objectives', $post->ID ) ):
+										echo '<ul class="mb-0">';
+										while( have_rows( 'chapter_learning_objectives' ) ) : the_row();
+
+											$objective = get_sub_field( 'chapter_objective' );
+											echo "<li>{$objective}</li>";
+
+										endwhile;
+										echo '</ul>';
+									else:
+										echo '<p>No objectives entered.</p>';
+									endif;
+								?>
+							</div>
+						</div>
 					</div>
 				</div>
-
-				<h5 id="contents" class="mt-4 heading-underline text-transform-none mb-2"><i class="fas fa-cubes"></i> Contents</h5>
-
-				<table class="table table-sm table-of-contents">
-					<?php
-						if( have_rows( 'chapter_sub_sections', $post->ID ) ):
-
-							$i = 1;
-							while( have_rows( 'chapter_sub_sections', $post->ID) ) : the_row();
-
-								$subSection = get_sub_field( 'section_title' );
-								$border = ($i == 1) ? 'class="border-top-0"' : '';
-
-								echo '<tr><td ' . $border . '><a href="#' . sanitize_title( $subSection ) . '"><i class="far fa-edit"></i> ' . $subSection . '</a></td></tr>';
-							endwhile;
-							$i++;
-
-						else :
-							echo '<tr><td>No sections entered.</td></tr>';
-						endif;
-					?>
-				</table>
 
 				<?php
 					if( have_rows( 'chapter_sub_sections', $post->ID ) ):
