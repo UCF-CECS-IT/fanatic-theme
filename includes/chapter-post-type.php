@@ -4,7 +4,7 @@ function fan_register_chapter_post_type() {
 	$singular = 'Chapter';
 	$plural = 'Chapters';
 	$taxonomies = array(
-		'post_tag',
+		// 'post_tag',
 		'category',
 		'difficulty',
 	);

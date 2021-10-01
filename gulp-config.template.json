@@ -1,4 +1,4 @@
 {
-  "sync": false,
-  "syncTarget": "http://localhost/wordpress/"
+  "sync": true,
+  "syncTarget": "http://localhost:10070/"
 }

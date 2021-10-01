@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Registers Unit CPT
+ *
+ * @since 0.1.0
+ * @return void
+ */
 function fan_register_unit_post_type() {
 	$singular = 'Unit';
 	$plural = 'Units';

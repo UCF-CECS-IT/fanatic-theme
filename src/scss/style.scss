@@ -62,3 +62,23 @@ $fa-font-path: '../fonts/font-awesome-5';
     }
   }
 }
+
+.course-heading-height {
+  @include media-breakpoint-up(md) {
+    min-height: 3 * $headings-line-height * $font-size-h5;
+  }
+
+  min-height: 2 * $headings-line-height * $font-size-h5;
+}
+
+.sidebar {
+  a {
+    color: $body-color;
+  }
+}
+
+.table-of-contents {
+  a {
+    color: $body-color;
+  }
+}

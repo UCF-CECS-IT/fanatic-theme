@@ -17,7 +17,9 @@ include_once FANATIC_THEME_DIR . 'includes/unit-post-type.php';
 include_once FANATIC_THEME_DIR . 'includes/difficulty-taxonomy.php';
 
 // Components and helper functions
+include_once FANATIC_THEME_DIR . 'includes/chapter.php';
 include_once FANATIC_THEME_DIR . 'includes/sidebar.php';
 include_once FANATIC_THEME_DIR . 'includes/course.php';
 include_once FANATIC_THEME_DIR . 'includes/unit.php';
 
+include_once FANATIC_THEME_DIR . 'includes/header-functions.php';

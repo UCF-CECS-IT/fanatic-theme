@@ -1,13 +1,19 @@
 <?php
 
+/**
+ * Registers the custom taxonomy used for sorting chapters by difficulty
+ *
+ * @since 0.1.0
+ * @return void
+ */
 function fan_register_difficulty() {
 	$singular = 'Difficulty';
 	$plural = 'Difficulties';
 
 	$labels = array(
-		'name'                       => _x( $plural, 'Taxonomy General Name', 'fanatic-theme' ),
+		'name'                       => $plural,
 		'singular_name'              => _x( $singular, 'Taxonomy Singular Name', 'fanatic-theme' ),
-		'menu_name'                  => __( $plural, 'fanatic-theme' ),
+		'menu_name'                  => $plural,
 		'all_items'                  => __( 'All ' . $plural, 'fanatic-theme' ),
 		'parent_item'                => __( 'Parent ' . $singular, 'fanatic-theme' ),
 		'parent_item_colon'          => __( 'Parent :' . $singular, 'fanatic-theme' ),
@@ -43,7 +49,9 @@ function fan_register_difficulty() {
 		)
 	);
 
-	return $args;
+	register_taxonomy( 'difficulty', array( 'chapter' ), $args );
 }
 
-register_taxonomy( 'difficulty', array( 'chapter' ), 'fan_register_difficulty' );
+add_action( 'init', 'fan_register_difficulty', 0 );
+
+

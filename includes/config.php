@@ -8,3 +8,9 @@ define( 'FANATIC_THEME_STATIC_URL', FANATIC_THEME_URL . '/static' );
 define( 'FANATIC_THEME_CSS_URL', FANATIC_THEME_STATIC_URL . '/css' );
 define( 'FANATIC_THEME_JS_URL', FANATIC_THEME_STATIC_URL . '/js' );
 define( 'FANATIC_THEME_IMG_URL', FANATIC_THEME_STATIC_URL . '/img' );
+
+if( function_exists('acf_add_options_page') ) {
+
+	acf_add_options_page();
+
+}
