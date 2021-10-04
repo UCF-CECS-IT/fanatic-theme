@@ -2,7 +2,6 @@
 
 namespace FANATIC\Theme\Includes\Meta;
 
-
 /**
  * Enqueue front-end css and js.
  **/
@@ -16,3 +15,17 @@ function enqueue_frontend_assets() {
 }
 
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_frontend_assets', 11 );
+
+
+/**
+ * Removes the UCF header bar from the theme.
+ *
+ * @since 0.2.2
+ * @return void
+ */
+function fan_dequeue() {
+	wp_dequeue_script( 'ucf-header' );
+	wp_deregister_script( 'ucf-header' );
+}
+
+add_action( 'wp_enqueue_scripts',  __NAMESPACE__ . '\fan_dequeue', 11 );

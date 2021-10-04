@@ -40,14 +40,9 @@ $subtitle = get_field( 'option_course_page_subtitle', 'option' )
 			</div>
 		</div>
 
-		<?php
-			// Print a spacer div for headers with background videos (to make
-			// control buttons accessible), and for headers showing a standard
-			// title/subtitle to push them up a bit
-			if ($videos || $header_content_type === 'title_subtitle') :
-				?>
+
 			<div class="header-media-controlfix"></div>
-		<?php endif; ?>
+
 	</div>
 
 <?php else : ?>

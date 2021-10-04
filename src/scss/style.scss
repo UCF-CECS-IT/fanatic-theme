@@ -82,3 +82,8 @@ $fa-font-path: '../fonts/font-awesome-5';
     color: $body-color;
   }
 }
+
+// Hides UCF header bar space
+#ucfhb {
+  display: none !important;
+}
